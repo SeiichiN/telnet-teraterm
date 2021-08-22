@@ -126,6 +126,20 @@ URLリンク
 \end{tabular}
 (http://www002.upp.so-net.ne.jp/latex/waku.html)
 
+
+verbatimを枠で囲む
+\newsavebox{\htmltext}    % 適当に名前をつける
+\setbox\htmltext=\vbox{\hsize 13cm  % 横の長さを指定
+\begin{verbatim}
+<!doctype html>
+<html lang="ja">
+....
+</html>
+\end{verbatim}
+}  % \vboxの終了
+
+\fbox{\usebox{\htmltext}}
+
 脚注
 \footnote{テキスト}   -- 番号は自動でつけられる
 \footnote[番号]{テキスト}
