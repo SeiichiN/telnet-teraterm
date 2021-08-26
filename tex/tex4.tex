@@ -150,21 +150,33 @@ $<$form action=''receive.php'' method=''post''$>$
 \begin{lstlisting}[caption=post-request.txt]
  POST /receive.php HTTP/1.1
  Host: localhost:8888
+ Content-Type: application/x-www-form-urlencoded
  Content-Length: 11
 
  name=Sasuke
 \end{lstlisting}
+
+\rightline{(以上をメモ帳などのエディタで書いて、\textsf{post-request.txt}という名前で保存しておく。)}
+
 
 \begin{enumerate}
  \item 今回は POST送信なので ``POST'' と指定する。\\
        また、送り先として ``receive.php'' を指定する。
  \item これは GET の場合と同じである。
  \item ここでは、ボディ部の長さを伝えている。``name=Sasuke'' で 11バイトである。
+ \item 送るデータは urlエンコードされた form の文字列である。
  \item 空行がヘッダ部とボディ部の区切りである。
  \item ``name'' という変数(コントロール名)に ``Sasuke'' という値(文字列)をセットしている。
 \end{enumerate}
 
-5行目の ``name=Sasuke'' は、post.html の以下の部分の記述に相当する。
+\hspace{5cm}
+\begin{tabular}{|p{10cm}|} \hline
+ urlエンコード --- インターネットで漢字など使用できない文字を送る際に使われる文字の変換方式
+ 。たとえば''山''だと \textsf{\%E5\%B1\%B1} となる。 \\ \hline
+\end{tabular}
+\vspace{3mm}
+
+6行目の ``name=Sasuke'' は、post.html の以下の部分の記述に相当する。
 
 \begin{tcolorbox}
  $<$input type="text" name=\underline{"name"} id="name" $>$
@@ -194,6 +206,7 @@ post-request.txt の 5行目は、以下のようになる。
 \begin{verbatim}
  POST /receive.php HTTP/1.1
  Host: localhost:8888
+ Content-Type: application/x-www-form-urlencoded
  Content-Length: 11
 
  name=Sasuke
@@ -363,4 +376,4 @@ Content-type: text/html; charset=UTF-8
 \include{end}
 
 
-%% 修正時刻： Sun Aug 22 13:52:28 2021
+%% 修正時刻： Thu Aug 26 08:47:59 2021
